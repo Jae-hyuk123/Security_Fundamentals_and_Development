@@ -1,5 +1,9 @@
 package com.mycompany.password_manager;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /*
@@ -136,9 +140,45 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jTextFiledForID.getText();
         String password = new String(jPasswordFieldForPW.getPassword());
+        boolean login = false;
         
         if(id.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "You should put ID and password!");
+            return;
+        }
+        
+        File usersDirectory = new File("users");
+        
+        try {
+            File usersFile = new File(usersDirectory, "users.txt");
+            
+            FileReader fr = new FileReader(usersFile);
+            
+            BufferedReader br = new BufferedReader(fr);
+            
+            String line = br.readLine();
+            while(line != null) {
+                String[] parts = line.split(", ");  // separate one line by ", "
+                
+                if(parts[1].equals(id) && parts[2].equals(password)) {
+                    JOptionPane.showMessageDialog(this, "Login successful!");
+                    login = true;
+                    break;
+                }
+                
+                line = br.readLine();
+            }
+            
+            if(login == false) {
+                JOptionPane.showMessageDialog(this, "Wrong Credential. try again!");
+                return;
+            }
+            
+            br.close();
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(this, "Error!");
+            System.out.println(e);
         }
     }//GEN-LAST:event_jButtonForLoginActionPerformed
 

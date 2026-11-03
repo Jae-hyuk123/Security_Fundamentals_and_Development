@@ -128,11 +128,12 @@ public class SignUpForm extends javax.swing.JDialog {
             usersDirectory.mkdir();
         }
         
-        
         // try to make user.txt into users direcetory
         File usersFile = new File(usersDirectory, "users.txt");
         
         try {
+
+            
             FileWriter fw = new FileWriter(usersFile, true);    // true: append
             
             BufferedWriter bw = new BufferedWriter(fw);
