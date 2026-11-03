@@ -140,13 +140,17 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jTextFiledForID.getText();
         String password = new String(jPasswordFieldForPW.getPassword());
+        String name = "";
         boolean login = false;
         
+        // if user don't put id or password properly, error message will pop up
         if(id.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "You should put ID and password!");
             return;
         }
         
+        
+        // read the users.txt file to validate the user.
         File usersDirectory = new File("users");
         
         try {
@@ -160,8 +164,10 @@ public class LoginForm extends javax.swing.JFrame {
             while(line != null) {
                 String[] parts = line.split(", ");  // separate one line by ", "
                 
+                // login success
                 if(parts[1].equals(id) && parts[2].equals(password)) {
                     JOptionPane.showMessageDialog(this, "Login successful!");
+                    name = parts[0];
                     login = true;
                     break;
                 }
@@ -169,12 +175,17 @@ public class LoginForm extends javax.swing.JFrame {
                 line = br.readLine();
             }
             
+            br.close();
+            
             if(login == false) {
                 JOptionPane.showMessageDialog(this, "Wrong Credential. try again!");
                 return;
             }
-            
-            br.close();
+            else {
+                ValidatedUserInfo userInfo = new ValidatedUserInfo(name, id);
+                new MainForm(userInfo).setVisible(true);
+                this.dispose();
+            }
         }
         catch(IOException e){
             JOptionPane.showMessageDialog(this, "Error!");
