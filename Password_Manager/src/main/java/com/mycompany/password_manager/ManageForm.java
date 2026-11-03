@@ -28,21 +28,135 @@ public class ManageForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelForManageForm = new javax.swing.JLabel();
+        jTextFieldForID = new javax.swing.JTextField();
+        jTextFieldForPW = new javax.swing.JTextField();
+        jLabelForID = new javax.swing.JLabel();
+        jLabelForPassword = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldForService = new javax.swing.JTextField();
+        jButtonForAdd = new javax.swing.JButton();
+        jButtonForRemove = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaForManageForm = new javax.swing.JTextArea();
+        jButtonForMainPage = new javax.swing.JButton();
+        jButtonForListPassword = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelForManageForm.setText("Manage password");
+
+        jTextFieldForID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldForIDActionPerformed(evt);
+            }
+        });
+
+        jLabelForID.setText("ID");
+
+        jLabelForPassword.setText("Password");
+
+        jLabel1.setText("Service");
+
+        jButtonForAdd.setText("Add");
+        jButtonForAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForAddActionPerformed(evt);
+            }
+        });
+
+        jButtonForRemove.setText("Remomve");
+        jButtonForRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForRemoveActionPerformed(evt);
+            }
+        });
+
+        jTextAreaForManageForm.setColumns(20);
+        jTextAreaForManageForm.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaForManageForm);
+
+        jButtonForMainPage.setText("Main Page");
+
+        jButtonForListPassword.setText("List Password Page");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jLabelForManageForm, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelForID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelForPassword)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldForPW)
+                            .addComponent(jTextFieldForID)
+                            .addComponent(jTextFieldForService, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonForRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonForAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonForMainPage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonForListPassword)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelForManageForm, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldForService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonForAdd)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldForID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelForID)
+                    .addComponent(jButtonForRemove))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldForPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelForPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonForMainPage)
+                    .addComponent(jButtonForListPassword))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldForIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldForIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldForIDActionPerformed
+
+    private void jButtonForAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonForAddActionPerformed
+
+    private void jButtonForRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForRemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonForRemoveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +184,18 @@ public class ManageForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonForAdd;
+    private javax.swing.JButton jButtonForListPassword;
+    private javax.swing.JButton jButtonForMainPage;
+    private javax.swing.JButton jButtonForRemove;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelForID;
+    private javax.swing.JLabel jLabelForManageForm;
+    private javax.swing.JLabel jLabelForPassword;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaForManageForm;
+    private javax.swing.JTextField jTextFieldForID;
+    private javax.swing.JTextField jTextFieldForPW;
+    private javax.swing.JTextField jTextFieldForService;
     // End of variables declaration//GEN-END:variables
 }
