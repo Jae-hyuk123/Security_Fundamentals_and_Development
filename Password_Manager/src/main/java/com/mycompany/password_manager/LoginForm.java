@@ -1,5 +1,7 @@
 package com.mycompany.password_manager;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -47,7 +49,18 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        jPasswordFieldForPW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldForPWActionPerformed(evt);
+            }
+        });
+
         jButtonForLogin.setText("Log-in");
+        jButtonForLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForLoginActionPerformed(evt);
+            }
+        });
 
         jLabelForID.setText("ID");
 
@@ -118,6 +131,20 @@ public class LoginForm extends javax.swing.JFrame {
         
         signUp.setVisible(true);        // open sign-up form
     }//GEN-LAST:event_jButtonForSignUpActionPerformed
+
+    private void jButtonForLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForLoginActionPerformed
+        // TODO add your handling code here:
+        String id = jTextFiledForID.getText();
+        String password = new String(jPasswordFieldForPW.getPassword());
+        
+        if(id.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You should put ID and password!");
+        }
+    }//GEN-LAST:event_jButtonForLoginActionPerformed
+
+    private void jPasswordFieldForPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldForPWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldForPWActionPerformed
 
     /**
      * @param args the command line arguments

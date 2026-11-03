@@ -4,6 +4,12 @@
  */
 package com.mycompany.password_manager;
 
+import java.io.BufferedWriter;
+import javax.swing.JOptionPane;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author ABC
@@ -49,6 +55,11 @@ public class SignUpForm extends javax.swing.JDialog {
         jLabelForPW.setText("Password");
 
         jButtonForSignUp.setText("Sign-up");
+        jButtonForSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForSignUpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,6 +108,51 @@ public class SignUpForm extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonForSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForSignUpActionPerformed
+        // TODO add your handling code here:
+        
+        String name = jTextFieldForName.getText();
+        String id = jTextFieldForID.getText();
+        String password = jTextFieldForPW.getText();
+        
+        if(name.isEmpty() || id.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You should fill out every field!");
+            return;
+        }
+        
+        
+        // Make users directory if it's not existing
+        File usersDirectory = new File("users");
+        if(!usersDirectory.exists()) {
+            usersDirectory.mkdir();
+        }
+        
+        
+        // try to make user.txt into users direcetory
+        File usersFile = new File(usersDirectory, "users.txt");
+        
+        try {
+            FileWriter fw = new FileWriter(usersFile, true);    // true: append
+            
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            bw.write(name + ", " + id + ", " + password + "\n");    // write users info.
+                                                                    // name, id, and passwords are separated by ", "
+            
+            bw.close();
+        }
+        catch(IOException e) {
+            JOptionPane.showMessageDialog(this, "Error!");
+            System.out.println(e);
+            
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, "Sign-up completed!");
+        
+        this.dispose();
+    }//GEN-LAST:event_jButtonForSignUpActionPerformed
 
     /**
      * @param args the command line arguments

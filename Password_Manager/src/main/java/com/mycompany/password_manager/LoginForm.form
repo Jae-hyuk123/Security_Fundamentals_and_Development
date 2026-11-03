@@ -87,11 +87,17 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordFieldForPW">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldForPWActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonForLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Log-in"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonForLoginActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelForID">
       <Properties>
