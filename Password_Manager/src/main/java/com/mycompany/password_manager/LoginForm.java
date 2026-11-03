@@ -54,6 +54,11 @@ public class LoginForm extends javax.swing.JFrame {
         jLabelForPW.setText("Password");
 
         jButtonForSignUp.setText("Sign-up");
+        jButtonForSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForSignUpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,6 +109,15 @@ public class LoginForm extends javax.swing.JFrame {
     private void jTextFiledForIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFiledForIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFiledForIDActionPerformed
+
+    private void jButtonForSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForSignUpActionPerformed
+        // TODO add your handling code here:        
+        
+        SignUpForm signUp = new SignUpForm(this, true); // this: LoginForm (parent)
+                                                        // true: deactivates LoginForm
+        
+        signUp.setVisible(true);        // open sign-up form
+    }//GEN-LAST:event_jButtonForSignUpActionPerformed
 
     /**
      * @param args the command line arguments
