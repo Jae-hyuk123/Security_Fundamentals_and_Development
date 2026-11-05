@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.password_manager;
 
@@ -8,15 +8,18 @@ package com.mycompany.password_manager;
  *
  * @author ABC
  */
-public class ListForm extends javax.swing.JFrame {
+public class ListForm extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListForm.class.getName());
+    private ValidatedUserInfo userInfo;
 
     /**
-     * Creates new form ListForm
+     * Creates new form ListForm2
      */
-    public ListForm() {
+    public ListForm(java.awt.Frame parent, boolean modal, ValidatedUserInfo userInfo) {
+        super(parent, modal);
         initComponents();
+        this.userInfo = userInfo;
     }
 
     /**
@@ -34,9 +37,8 @@ public class ListForm extends javax.swing.JFrame {
         jTextFieldForSearch = new javax.swing.JTextField();
         jButtonForSearch = new javax.swing.JButton();
         jButtonForMainPage = new javax.swing.JButton();
-        jButtonForManagePassword = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelForListForm.setText("List password");
 
@@ -55,13 +57,6 @@ public class ListForm extends javax.swing.JFrame {
         jButtonForMainPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonForMainPageActionPerformed(evt);
-            }
-        });
-
-        jButtonForManagePassword.setText("Manage Password");
-        jButtonForManagePassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonForManagePasswordActionPerformed(evt);
             }
         });
 
@@ -87,8 +82,6 @@ public class ListForm extends javax.swing.JFrame {
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonForMainPage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonForManagePassword)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -102,11 +95,9 @@ public class ListForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldForSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonForSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonForMainPage)
-                    .addComponent(jButtonForManagePassword))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButtonForMainPage)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -118,40 +109,30 @@ public class ListForm extends javax.swing.JFrame {
 
     private void jButtonForMainPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForMainPageActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButtonForMainPageActionPerformed
 
-    private void jButtonForManagePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForManagePasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonForManagePasswordActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    /*
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                ListForm dialog = new ListForm(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ListForm().setVisible(true));
+        });
     }
+*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonForMainPage;
-    private javax.swing.JButton jButtonForManagePassword;
     private javax.swing.JButton jButtonForSearch;
     private javax.swing.JLabel jLabelForListForm;
     private javax.swing.JScrollPane jScrollPane1;

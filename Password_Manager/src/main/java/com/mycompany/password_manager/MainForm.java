@@ -104,10 +104,20 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jButtonForMangerPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForMangerPasswordActionPerformed
         // TODO add your handling code here:
+        
+        ManageForm manageForm = new ManageForm(this, true, userInfo); // this: MainForm (parent)
+                                                                        // true: deactivates MainForm
+        
+        manageForm.setVisible(true);        // open ManageForm
     }//GEN-LAST:event_jButtonForMangerPasswordActionPerformed
 
     private void jButtonForListPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForListPasswordActionPerformed
         // TODO add your handling code here:
+        
+        ListForm listForm = new ListForm(this, true, userInfo);   // this: MainForm (parent)
+                                                                  // true: deactivates MainForm
+        
+        listForm.setVisible(true);        // open ListForm
     }//GEN-LAST:event_jButtonForListPasswordActionPerformed
 
     /**

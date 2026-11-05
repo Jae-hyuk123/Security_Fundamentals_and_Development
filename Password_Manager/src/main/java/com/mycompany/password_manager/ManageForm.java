@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.password_manager;
 
@@ -8,17 +8,21 @@ package com.mycompany.password_manager;
  *
  * @author ABC
  */
-public class ManageForm extends javax.swing.JFrame {
+public class ManageForm extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageForm.class.getName());
-
+    private ValidatedUserInfo userInfo;
+    
     /**
-     * Creates new form ManageForm
+     * Creates new form ManageForm2
      */
-    public ManageForm() {
+    public ManageForm(java.awt.Frame parent, boolean modal, ValidatedUserInfo userInfo) {
+        super(parent, modal);
         initComponents();
+        this.userInfo = userInfo;
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,33 +32,20 @@ public class ManageForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelForManageForm = new javax.swing.JLabel();
-        jTextFieldForID = new javax.swing.JTextField();
-        jTextFieldForPW = new javax.swing.JTextField();
-        jLabelForID = new javax.swing.JLabel();
-        jLabelForPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldForService = new javax.swing.JTextField();
         jButtonForAdd = new javax.swing.JButton();
         jButtonForRemove = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaForManageForm = new javax.swing.JTextArea();
+        jLabelForManageForm = new javax.swing.JLabel();
         jButtonForMainPage = new javax.swing.JButton();
-        jButtonForListPassword = new javax.swing.JButton();
+        jTextFieldForID = new javax.swing.JTextField();
+        jTextFieldForPW = new javax.swing.JTextField();
+        jLabelForID = new javax.swing.JLabel();
+        jLabelForPassword = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabelForManageForm.setText("Manage password");
-
-        jTextFieldForID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldForIDActionPerformed(evt);
-            }
-        });
-
-        jLabelForID.setText("ID");
-
-        jLabelForPassword.setText("Password");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Service");
 
@@ -76,9 +67,24 @@ public class ManageForm extends javax.swing.JFrame {
         jTextAreaForManageForm.setRows(5);
         jScrollPane1.setViewportView(jTextAreaForManageForm);
 
-        jButtonForMainPage.setText("Main Page");
+        jLabelForManageForm.setText("Manage password");
 
-        jButtonForListPassword.setText("List Password Page");
+        jButtonForMainPage.setText("Main Page");
+        jButtonForMainPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonForMainPageActionPerformed(evt);
+            }
+        });
+
+        jTextFieldForID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldForIDActionPerformed(evt);
+            }
+        });
+
+        jLabelForID.setText("ID");
+
+        jLabelForPassword.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,9 +116,7 @@ public class ManageForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonForMainPage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonForListPassword)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,19 +140,13 @@ public class ManageForm extends javax.swing.JFrame {
                     .addComponent(jLabelForPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonForMainPage)
-                    .addComponent(jButtonForListPassword))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonForMainPage)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldForIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldForIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldForIDActionPerformed
 
     private void jButtonForAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForAddActionPerformed
         // TODO add your handling code here:
@@ -158,34 +156,37 @@ public class ManageForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonForRemoveActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jTextFieldForIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldForIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldForIDActionPerformed
+
+    private void jButtonForMainPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonForMainPageActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonForMainPageActionPerformed
+
+    /*
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                ManageForm dialog = new ManageForm(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ManageForm().setVisible(true));
+        });
     }
-
+    */
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonForAdd;
-    private javax.swing.JButton jButtonForListPassword;
     private javax.swing.JButton jButtonForMainPage;
     private javax.swing.JButton jButtonForRemove;
     private javax.swing.JLabel jLabel1;
