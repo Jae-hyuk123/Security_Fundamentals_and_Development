@@ -24,6 +24,7 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm(ValidatedUserInfo userInfo) {
         initComponents();
         this.userInfo = userInfo;
+        this.setLocationRelativeTo(null);   // show this app in the middle of the screen
         
         nameLbl.setText("Name: " + userInfo.getName());
         idLbl.setText("ID: " + userInfo.getId());
@@ -105,7 +106,6 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         ManageForm manageForm = new ManageForm(this, true, userInfo); // this: MainForm (parent)
-        this.dispose();  // true: deactivates MainForm
         
         manageForm.setVisible(true);        // open ManageForm
         
@@ -114,8 +114,8 @@ public class MainForm extends javax.swing.JFrame {
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
         // TODO add your handling code here:
         
-        ListForm listForm = new ListForm(this, true, userInfo);   // this: MainForm (parent)
-        this.dispose();  // true: deactivates MainForm
+        ListForm listForm = new ListForm(this, true, userInfo);   // this: MainForm (parent) 
+                                                                  // true: deactivates MainForm
         
         listForm.setVisible(true);        // open ListForm
         

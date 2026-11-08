@@ -32,6 +32,7 @@ public class ManageForm extends javax.swing.JDialog {
     public ManageForm(java.awt.Frame parent, boolean modal, ValidatedUserInfo userInfo) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);   // show this app in the middle of the screen
         this.userInfo = userInfo;
     }
 
@@ -215,8 +216,6 @@ public class ManageForm extends javax.swing.JDialog {
 
     private void mainmenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuBtnActionPerformed
         // TODO add your handling code here:
-        MainForm myGui = new MainForm();
-        myGui.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mainmenuBtnActionPerformed
 

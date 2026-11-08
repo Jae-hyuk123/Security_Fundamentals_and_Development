@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -24,6 +25,7 @@ public class SignUpForm extends javax.swing.JDialog {
     public SignUpForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);   // show this app in the middle of the screen
     }
 
     /**
@@ -140,6 +142,11 @@ public class SignUpForm extends javax.swing.JDialog {
             return;
         }
         
+        // hash the password
+        // BCrypt.gensalt(12) : generate salt
+        // BCrypte.hashpw() : hash password
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
         
         // Make users directory if it's not existing
         File usersDirectory = new File("users");
@@ -157,7 +164,7 @@ public class SignUpForm extends javax.swing.JDialog {
             
             BufferedWriter bw = new BufferedWriter(fw);
             
-            bw.write(name + ", " + id + ", " + password + "\n");    // write users info.
+            bw.write(name + ", " + id + ", " + hashedPassword + "\n");    // write users info.
                                                                     // name, id, and passwords are separated by ", "
             
             bw.close();
@@ -170,7 +177,7 @@ public class SignUpForm extends javax.swing.JDialog {
         }
         
         JOptionPane.showMessageDialog(this, "Sign-up completed!");
-        
+
         this.dispose();
     }//GEN-LAST:event_signupBnActionPerformed
 
@@ -180,8 +187,6 @@ public class SignUpForm extends javax.swing.JDialog {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        LoginForm logGui = new LoginForm();
-        logGui.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 

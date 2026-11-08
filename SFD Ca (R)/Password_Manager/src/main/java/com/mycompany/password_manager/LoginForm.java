@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,6 +25,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        this.setLocationRelativeTo(null);   // show this app in the middle of the screen
     }
 
     /**
@@ -133,7 +135,6 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:        
         
         SignUpForm signUp = new SignUpForm(this, true); // this: LoginForm (parent)
-        this.dispose();   //deactivates LoginForm
         
         signUp.setVisible(true);        // open sign-up form
         
@@ -168,7 +169,7 @@ public class LoginForm extends javax.swing.JFrame {
                 String[] parts = line.split(", ");  // separate one line by ", "
                 
                 // login success
-                if(parts[1].equals(id) && parts[2].equals(password)) {
+                if(parts[1].equals(id) && BCrypt.checkpw(password, parts[2])) { //parts[2].equals(password)) {
                     JOptionPane.showMessageDialog(this, "Login successful!");
                     name = parts[0];
                     login = true;

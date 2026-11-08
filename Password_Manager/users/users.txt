@@ -1,1 +1,2 @@
 John, idid123123, password123
+Mario, mario123, 123123

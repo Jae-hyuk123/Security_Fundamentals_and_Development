@@ -1,2 +1,5 @@
 John, idid123123, password123
 Richard, x21, Richard1
+hashtest, hashtest, hashtest
+hashtest1, hashtest1, $2a$12$P2BGD4gD19e1FzIM.y7uyejRagmNo7DrMarJDuyhxZteE6royeAti
+hashtest2, hashtest2, $2a$12$rZj8CXRXiUdWRiGgjLmQxull0GUIVJjIkHXbg6h0oDZ3Q10nugBsW
