@@ -6,10 +6,8 @@ package com.mycompany.password_manager;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -124,7 +122,52 @@ public class ListForm extends javax.swing.JDialog {
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
         String searchTerm = searchTf.getText();
+        String userId = userInfo.getId();
+        
+        // initlaize text field
+        outputTa.setText("");
+        
+        // check the id.txt file first
+        File passwordDirectory = new File("passwords");
+        
+        File userFile = new File(passwordDirectory, userId + ".txt");
+        
+        if(!userFile.exists()) {
+            outputTa.append("No stored passwords!");
+            return;
+        }
+        
+        // find the user's file and display the searched service
+        try {
+            FileReader fr = new FileReader(userFile);
+            
+            BufferedReader br = new BufferedReader(fr);
+            
+            boolean hasContent = false;
+            
+            String line = br.readLine();
+            while(line != null) {
+                String[] parts = line.split(" | "); // separate one line by " | "
+                
+                if(searchTerm.equalsIgnoreCase(parts[0])) {
+                    outputTa.append(line + "\n");
+                }
+                
+                hasContent = true;
 
+                line = br.readLine();
+            }
+            
+            if(hasContent = false) {
+                outputTa.append("No stored passwords!");
+                return;
+            }
+        } catch (IOException e) {
+            outputTa.append("Error: " + e.getMessage());
+        }
+        
+        
+        /*
         try {
             Scanner scan = new Scanner(new File("Holder.txt"));
 
@@ -134,10 +177,13 @@ public class ListForm extends javax.swing.JDialog {
                     outputTa.append(line);
                 }
             }
-        } catch (FileNotFoundException i) {
+        } 
+        
+        catch (FileNotFoundException i) {
             outputTa.append("Error: " + i.getMessage());
         }
-
+        */
+        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void mainmenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuBtnActionPerformed
@@ -146,7 +192,47 @@ public class ListForm extends javax.swing.JDialog {
     }//GEN-LAST:event_mainmenuBtnActionPerformed
 
     private void displayAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayAllBtnActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:       
+        
+        String userId = userInfo.getId();
+        
+        // initlaize text field
+        outputTa.setText("");
+        
+        // check the id.txt file first
+        File passwordDirectory = new File("passwords");
+        
+        File userFile = new File(passwordDirectory, userId + ".txt");
+        
+        if(!userFile.exists()) {
+            outputTa.append("No stored passwords!");
+            return;
+        }
+        
+        // find the user's file and display all the passwords
+        try {
+            FileReader fr = new FileReader(userFile);
+            
+            BufferedReader br = new BufferedReader(fr);
+            
+            boolean hasContent = false;
+            
+            String line = br.readLine();
+            while(line != null) {
+                hasContent = true;
+                outputTa.append(line + "\n");
+                line = br.readLine();
+            }
+            
+            if(hasContent = false) {
+                outputTa.append("No stored passwords!");
+                return;
+            }
+        } catch (IOException e) {
+            outputTa.append("Error: " + e.getMessage());
+        }
+        
+        /*
         try (BufferedReader br = new BufferedReader(new FileReader("Holder.txt"))) {
             String account;
             account = br.readLine();
@@ -160,6 +246,7 @@ public class ListForm extends javax.swing.JDialog {
         } catch (IOException e) {
             outputTa.append("Error: " + e.getMessage());
         }
+        */
     }//GEN-LAST:event_displayAllBtnActionPerformed
 
 
