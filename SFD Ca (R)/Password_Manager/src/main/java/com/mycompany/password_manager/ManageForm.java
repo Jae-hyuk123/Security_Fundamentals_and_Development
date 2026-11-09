@@ -177,7 +177,10 @@ public class ManageForm extends javax.swing.JDialog {
         String ID = idTf.getText();
         String password = passwrdTf.getText();
         String userId = userInfo.getId();       // this user's id. not service's id.
-
+        
+        // initialize text field
+        outputTa.setText("");
+        
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
@@ -276,6 +279,9 @@ public class ManageForm extends javax.swing.JDialog {
         String ID = idTf.getText().trim();
         String userId = userInfo.getId();       // this user's id. not service's id.
 
+        // initialize text field
+        outputTa.setText("");
+        
         ArrayList<String> accounts = new ArrayList<>();
 
         boolean found = false;
