@@ -46,7 +46,7 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titleLbl.setText("Welcome to password manager");
+        titleLbl.setText("Welcome to Passwords R Us");
 
         manageBtn.setText("Manage password");
         manageBtn.addActionListener(new java.awt.event.ActionListener() {

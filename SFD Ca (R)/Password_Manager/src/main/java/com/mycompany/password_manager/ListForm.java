@@ -17,6 +17,7 @@ public class ListForm extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListForm.class.getName());
     private ValidatedUserInfo userInfo;
+    AESEncryption aesEncryption = new AESEncryption();
 
     /**
      * Creates new form ListForm2
@@ -147,10 +148,14 @@ public class ListForm extends javax.swing.JDialog {
             
             String line = br.readLine();
             while(line != null) {
-                String[] parts = line.split(" | "); // separate one line by " | "
+                String[] parts = line.split(" \\| "); // separate one line by " | "
                 
                 if(searchTerm.equalsIgnoreCase(parts[0])) {
-                    outputTa.append(line + "\n");
+                    
+                    // decrypt
+                    String plainPassword = aesEncryption.decrypt(parts[2]);
+                    
+                    outputTa.append(parts[0] + "  |  " + parts[1] + "  |  " + plainPassword + "\n");
                 }
                 
                 hasContent = true;
@@ -158,7 +163,7 @@ public class ListForm extends javax.swing.JDialog {
                 line = br.readLine();
             }
             
-            if(hasContent = false) {
+            if(hasContent == false) {
                 outputTa.append("No stored passwords!");
                 return;
             }
@@ -220,11 +225,18 @@ public class ListForm extends javax.swing.JDialog {
             String line = br.readLine();
             while(line != null) {
                 hasContent = true;
-                outputTa.append(line + "\n");
+                
+                String[] parts = line.split(" \\| ");
+                
+                // decrypt the password
+                String plainPassword = aesEncryption.decrypt(parts[2]);
+                
+                outputTa.append(parts[0] + "  |  " + parts[1] + "  |  " + plainPassword + "\n");
+                
                 line = br.readLine();
             }
             
-            if(hasContent = false) {
+            if(hasContent == false) {
                 outputTa.append("No stored passwords!");
                 return;
             }

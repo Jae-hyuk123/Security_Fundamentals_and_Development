@@ -177,11 +177,15 @@ public class ManageForm extends javax.swing.JDialog {
         String ID = idTf.getText();
         String password = passwrdTf.getText();
         String userId = userInfo.getId();       // this user's id. not service's id.
-        
+
         // initialize text field
         outputTa.setText("");
+
+        
         
         try {
+            
+            /*
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
             String encPassword = passwrdTf.getText();
@@ -192,48 +196,44 @@ public class ManageForm extends javax.swing.JDialog {
                 sb.append(String.format("%02x", b));
             }
             String hashedPassword = sb.toString();
+            */
             
             
-            
-            //  ----------------------------------------- add passwowrds
+            // encrypt the password using AES
+            AESEncryption aesEncryption = new AESEncryption();
+            String encryptedPW = aesEncryption.encrypt(password);
             
             // Make passwords direcotry if it's not existing
             File passwordDirectory = new File("passwords");
-            if(!passwordDirectory.exists()) {
+            if (!passwordDirectory.exists()) {
                 passwordDirectory.mkdir();
             }
-            
-            
+        
             // try to make .txt file for specified user
-            
             // check if the specified user has their own .txt file first
             // .txt file name is determined by their id
             // for example, if user John's id is john123, the .txt file name will be john123.txt
-            
             File userFile = new File(passwordDirectory, userId + ".txt");
-            
+
             try {
-                
+
                 FileWriter fw = new FileWriter(userFile, true);     // true: append
-                
+
                 BufferedWriter bw = new BufferedWriter(fw);
-                
-                bw.write(service + " | " + ID + " | " + password + " | " + hashedPassword + "\n");
-                
+
+                bw.write(service + " | " + ID +  " | " + encryptedPW + "\n");
+
                 outputTa.append("Password/account details has been added. ");
 
                 bw.close();
-            }
-            catch(IOException e) {
+            } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Error!");
                 System.out.println(e);
-            
+
                 return;
             }
-            
-            
-            
-        /*    
+
+            /*    
            
             try (BufferedWriter bw = new BufferedWriter(new FileWriter("Holder.txt", true))) {
                 bw.write(service + " | " + ID + " | " + password + " | " + hashedPassword);
@@ -243,20 +243,16 @@ public class ManageForm extends javax.swing.JDialog {
             }
             
         } 
-           */
+             */
             
-
-        } catch (NoSuchAlgorithmException s) {
-            JOptionPane.showMessageDialog(null, "Error: " + s.getLocalizedMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
 
-           
+
     }//GEN-LAST:event_addBtnActionPerformed
 
-        
- 
-    
-    
+
     private void clearAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllBtnActionPerformed
         // TODO add your handling code here:
         serviceTf.setText("");
@@ -281,26 +277,25 @@ public class ManageForm extends javax.swing.JDialog {
 
         // initialize text field
         outputTa.setText("");
-        
+
         ArrayList<String> accounts = new ArrayList<>();
 
         boolean found = false;
-        
-        
+
         try {
             File passwordDirectory = new File("passwords");
-            
+
             File userFile = new File(passwordDirectory, userId + ".txt");
-            
+
             Scanner scan = new Scanner(userFile);
 
             while (scan.hasNextLine()) {
 
                 String line = scan.nextLine();
 
-                String[] details = line.split("\\s*\\|\\s*", 4);
+                String[] details = line.split("\\s*\\|\\s*", 3);
 
-                if (details.length >= 4
+                if (details.length >= 3
                         && details[0].equalsIgnoreCase(service)
                         && details[1].equals(ID)) {
 
@@ -332,12 +327,12 @@ public class ManageForm extends javax.swing.JDialog {
                 outputTa.setText("Account not found.");
 
             }
-            
+
         } catch (FileNotFoundException e) {
             outputTa.setText("Error: " + e.getMessage());
         }
-        
-        
+
+
     }//GEN-LAST:event_RemoveBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

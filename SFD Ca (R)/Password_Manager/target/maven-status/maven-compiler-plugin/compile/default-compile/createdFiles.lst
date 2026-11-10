@@ -11,6 +11,7 @@ com\mycompany\password_manager\SignUpForm.class
 com\mycompany\password_manager\MainForm$1.class
 com\mycompany\password_manager\SignUpForm$2.class
 com\mycompany\password_manager\ValidatedUserInfo.class
+com\mycompany\password_manager\AESEncryption.class
 com\mycompany\password_manager\ListForm$2.class
 com\mycompany\password_manager\ListForm.class
 com\mycompany\password_manager\SignUpForm$4.class

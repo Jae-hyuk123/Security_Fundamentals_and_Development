@@ -68,7 +68,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="titleLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Welcome to password manager"/>
+        <Property name="text" type="java.lang.String" value="Welcome to Passwords R Us"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="manageBtn">
